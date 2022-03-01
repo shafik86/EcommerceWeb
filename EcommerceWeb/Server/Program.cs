@@ -1,5 +1,6 @@
 using EcommerceWeb.Server.Data;
 using EcommerceWeb.Server.Models;
+using MudBlazor.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
@@ -17,10 +18,11 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 builder.Services.AddIdentityServer()
     .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
+builder.Services.AddMudServices();
 builder.Services.AddAuthentication()
-    .AddIdentityServerJwt();
-
+    .AddIdentityServerJwt()
+    .AddCookie();
+//builder.Services.AddSwaggerGen;
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
@@ -40,7 +42,7 @@ else
 }
 
 app.UseHttpsRedirection();
-
+//app.UseSwaggerUI;
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 

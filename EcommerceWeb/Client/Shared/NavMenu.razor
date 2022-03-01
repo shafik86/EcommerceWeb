@@ -1,4 +1,23 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿
+
+<MudPaper Width="250px" Elevation="0" Class="py-3">
+    <MudNavMenu Color="Color.Info">
+        <MudNavLink Href="/" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Dashboard">Home</MudNavLink>
+        <MudNavLink Href="/dashboard" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Dashboard">Dashboard</MudNavLink>
+        <MudNavLink Href="/Checkout" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.ShoppingCartCheckout">Checkout</MudNavLink>
+        <MudNavLink Href="/products" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Storage">Products</MudNavLink>
+        <MudNavLink Href="/cart" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.ShoppingCart" Disabled="false">Cart</MudNavLink>
+        <MudNavLink Href="/Seller" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Storefront" Disabled="false">Seller</MudNavLink>
+        <MudNavGroup Title="Settings" Expanded="false">
+            <MudNavLink Href="/users">Users</MudNavLink>
+            <MudNavLink Href="/security">Security</MudNavLink>
+        </MudNavGroup>
+        <MudNavLink Href="/about">About</MudNavLink>
+    </MudNavMenu>
+</MudPaper>
+
+
+@*<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">EcommerceWeb</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -37,4 +56,4 @@
     {
         collapseNavMenu = !collapseNavMenu;
     }
-}
+}*@
