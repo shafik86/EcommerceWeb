@@ -6,16 +6,41 @@
 
 <AuthorizeView>
     <Authorized>
-        <a href="authentication/profile">Hello, @context.User.Identity?.Name!</a>
-        <button class="nav-link btn btn-link" @onclick="BeginSignOut">Log out</button>
+        <div class="justify-content-end">
+            
+            <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Secondary" >Hello, @context.User.Identity?.Name</MudChip>
+            @*<a href="authentication/profile" style="color:violet">Hello, @context.User.Identity?.Name!</a>*@
+            <MudChip Icon="@Icons.Material.Filled.Logout" Color="Color.Secondary" OnClick="BeginSignOut">Log Out</MudChip>
+                
+            
+            
+        </div>
     </Authorized>
     <NotAuthorized>
-        <a href="authentication/register">Register</a>
-        <a href="authentication/login">Log in</a>
+        <div class="justify-content-end"> 
+            
+            @*<a href="authentication/register" style="color:antiquewhite">Register</a>*@
+            <MudChip Icon="@Icons.Material.Filled.AppRegistration" Color="Color.Info" OnClick="@(() => Navigation.NavigateTo("authentication/register"))">Register</MudChip>
+            <MudChip Icon="@Icons.Material.Filled.Login" Color="Color.Success" OnClick="@(() => Navigation.NavigateTo("authentication/login"))">Login</MudChip>
+            
+            @*<a href="authentication/login" style="color:antiquewhite">Log in</a>*@
+        </div>
     </NotAuthorized>
 </AuthorizeView>
 
 @code{
+        [CascadingParameter]
+    public bool Rtl { get; set; }
+
+    //bool openStart = false;
+    bool openEnd = false;
+
+
+
+    void ToggleEndDrawer()
+    {
+        openEnd = !openEnd;
+    }
     private async Task BeginSignOut(MouseEventArgs args)
     {
         await SignOutManager.SetSignOutState();
