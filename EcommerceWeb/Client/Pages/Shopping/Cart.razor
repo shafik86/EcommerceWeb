@@ -1,7 +1,7 @@
 ﻿@inject NavigationManager Navigation
 
 @*<MudPaper Width="100%" Height="100%" Elevation="2" Class="py-6 my-2">*@
-    <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true" Style="text-shadow:2">Cart</MudText>
+    
     <MudGrid Spacing="12" Class="mt-5">
         <MudItem xs="12">
             <MudText Typo="Typo.h5" GutterBottom="true">Items</MudText>
@@ -41,7 +41,7 @@
                 </div>                
             </MudPaper>
             <MudPaper Class="mt-2" Height="50px">
-                <MudButton Class="my-md-2 ml-2" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.ShoppingCartCheckout" OnClick="@(() => Navigation.NavigateTo("/checkout"))" Color="Color.Warning">Continue Checkout</MudButton>
+                <MudButton Class="my-md-2 ml-2 " Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.ShoppingCartCheckout" OnClick="@(() => Navigation.NavigateTo("/checkout"))" Color="Color.Warning">Continue Checkout</MudButton>
             </MudPaper>
         </MudItem>
      </MudGrid>

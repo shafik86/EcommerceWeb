@@ -1,12 +1,9 @@
 ﻿@page "/checkout"
-
-<TopBar/>
-<MudContainer Class="mt-12" MaxWidth="MaxWidth.Medium">
-    
+<MudContainer Class="mt12">
     <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">Checkout</MudText>
     <MudGrid Spacing="6" Class="mt-16">
         <MudItem xs="6">
-            <MudText Typo="Typo.h5" GutterBottom="true">Billing address</MudText>
+            <MudText Typo="Typo.h5" GutterBottom="false">Billing address</MudText>
             <MudGrid>
                 <MudItem xs="12">
                     <MudTextField T="string" Label="Email" />
@@ -37,91 +34,35 @@
                 </MudItem>
             </MudGrid>
         </MudItem>
-        <MudItem xs="6">
-            <MudText Typo="Typo.h5" GutterBottom="true" Color="Color.Warning" Align="Align.End" Inline="false" Class="float-end" >@minutes.ToString()m @Timer.ToString()s remaining</MudText>
-            <MudPaper Class="d-flex flex-column" Style="height:100%; width:100%" Outlined="true">
-               <Cart/>
-                @* <MudList Clickable="true">
-                    <MudListItem Icon="@Icons.Material.Filled.CardTravel">
-                        <div class="d-flex">
-                            <MudText>@PampLady</MudText>
-                            <MudText Inline="true" Class="ml-auto">MYR @PampLadyPrice</MudText>
-                        </div>
-                    </MudListItem>
-                    <MudListItem Icon="@Icons.Material.Filled.CardMembership">
-                        <div class="d-flex">
-                            <MudText>@PampCast</MudText>
-                            <MudText Class="ml-auto">MYR @PampCastPrice</MudText>
-                        </div>
-                    </MudListItem>
-                    <MudListItem Icon="@Icons.Material.Filled.CurrencyBitcoin">
-                        <div class="d-flex">
-                            <MudText>@KelantanGold</MudText>
-                            <MudText Class="ml-auto">MYR @KelantanGoldPrice</MudText>
-                        </div>
-                    </MudListItem>
-                    <MudListItem Icon="@Icons.Material.Filled.CardGiftcard">
-                        <div class="d-flex">
-                            <MudText>@NubexGold</MudText>
-                            <MudText Class="ml-auto">MYR @NubexGoldPrice</MudText>
-                        </div>
-                    </MudListItem>
-                </MudList>
-                <div class="mt-auto">
-                    <MudDivider />
-                    <div class="d-flex pa-4">
-                        <MudText>Total:</MudText>
-                        <MudText Class="ml-auto"><b>MYR @Total</b></MudText>
-                    </div>
-                </div>*@
-            </MudPaper>
+        <MudItem xs="5">
+            <MudText Typo="Typo.h3" GutterBottom="true">Cart</MudText>
+            <MudText Typo="Typo.h6" Inline="true" Color="Color.Warning" Class="justify-content-end">@minutes.ToString()m @Timer.ToString()s Remaining</MudText>
+            <Cart/>
         </MudItem>
     </MudGrid>
 </MudContainer>
 
 
 @code{
-    public double CheckoutTime { get; set; } = 5.00;
-    public string PampLady { get; set; } = "PAMP SUISSE OF LADY FORTUNA- VERISCAN 10G GOLD 999.9 - COND: A";
-    public double PampLadyPrice { get; set; } = 2959.67;
 
-    public string PampCast { get; set; } = "PAMP SUISSE CAST BAR 50G GOLD 999.9 - COND: A+";
-    public double PampCastPrice { get; set; } = 13914;
-
-    public string KelantanGold { get; set; } = "KELANTAN GOLD TRADE 20 DIRHAM SILVER 999.0 - COND: A";
-    public double KelantanGoldPrice { get; set; } = 366.8;
-
-    public string NubexGold { get; set; } = "NUBEX X IGR 10G GOLD 999.9 - COND: A+";
-    public double NubexGoldPrice { get; set; } = 2955.4;
-
-    public double Total { get; set; }
 
     public int Timer { get; set; }
-    public int minutes { get; set; }
+    public int minutes { get; set; } = 5;
     public bool IsRunning { get; set; } = true;
     public bool IsStop { get; set; } = false;
 
     protected override void OnInitialized()
     {
-
-        Total = Sum();
         InitialValue();
-        LoadTimer();
-        //base.OnInitialized();
-
+        if(!IsStop)
+        {
+            LoadTimer();
+        }
     }
     void InitialValue()
     {
         Timer = 0;
         minutes = 5;
-    }
-    public double Sum()
-    {
-        return
-        PampCastPrice +
-        PampLadyPrice +
-        KelantanGoldPrice +
-        NubexGoldPrice;
     }
 
     public async void LoadTimer()
@@ -132,11 +73,13 @@
             if (Timer == 0)
             {
                 Timer = 59;
+                minutes -= 1;
             }
             else
             {
 
                 Timer -= 1;
+
             }
 
             CheckTimer();
@@ -156,19 +99,12 @@
     {
         if (Timer == 0)
         {
+            
             if (minutes == 0)
             {
                 Stoptime();
             }
-            else
-            {
-
-                minutes -= 1;
-                if (minutes == 0)
-                {
-                    minutes = 0;
-                }
-            }
+            
             //Task.Delay(1000);
             //Timer = 00;
         }
