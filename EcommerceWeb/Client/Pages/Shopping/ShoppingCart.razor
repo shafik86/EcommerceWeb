@@ -1,5 +1,6 @@
 ﻿@page "/Cart"
 @inject NavigationManager Navigation
+<TopBar/>
  <Cart/>
 @code {
     public string PampLady { get; set; } = "PAMP SUISSE OF LADY FORTUNA- VERISCAN 10G GOLD 999.9 - COND: A";
@@ -21,4 +22,13 @@
         base.OnInitialized();
     }
 
-   }
+    public double Sum()
+    {
+        return
+        PampCastPrice +
+        PampLadyPrice +
+        KelantanGoldPrice +
+        NubexGoldPrice;
+    }
+
+}
