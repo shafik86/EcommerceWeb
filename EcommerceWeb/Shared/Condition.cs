@@ -9,7 +9,7 @@ namespace EcommerceWeb.Shared
     public class Condition
     {
         public int ConditionId { get; set; }
-        public string ConditionName { get; set; } 
+        public string? ConditionName { get; set; } 
 
     }
 }

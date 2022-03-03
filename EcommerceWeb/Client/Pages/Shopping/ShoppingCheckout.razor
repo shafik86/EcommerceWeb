@@ -1,9 +1,11 @@
 ﻿@page "/checkout"
 
-<MudContainer Class="mt-16" MaxWidth="MaxWidth.Medium">
+<TopBar/>
+<MudContainer Class="mt-12" MaxWidth="MaxWidth.Medium">
+    
     <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">Checkout</MudText>
     <MudGrid Spacing="6" Class="mt-16">
-        <MudItem xs="7">
+        <MudItem xs="6">
             <MudText Typo="Typo.h5" GutterBottom="true">Billing address</MudText>
             <MudGrid>
                 <MudItem xs="12">
@@ -35,10 +37,11 @@
                 </MudItem>
             </MudGrid>
         </MudItem>
-        <MudItem xs="5">
-            <MudText Typo="Typo.h5" GutterBottom="true">Cart</MudText>
-            <MudPaper Class="d-flex flex-column" Style="height:100%;" Outlined="true">
-                <MudList Clickable="true">
+        <MudItem xs="6">
+            <MudText Typo="Typo.h5" GutterBottom="true" Color="Color.Warning" Align="Align.End" Inline="false" Class="float-end" >@minutes.ToString()m @Timer.ToString()s remaining</MudText>
+            <MudPaper Class="d-flex flex-column" Style="height:100%; width:100%" Outlined="true">
+               <Cart/>
+                @* <MudList Clickable="true">
                     <MudListItem Icon="@Icons.Material.Filled.CardTravel">
                         <div class="d-flex">
                             <MudText>@PampLady</MudText>
@@ -70,7 +73,7 @@
                         <MudText>Total:</MudText>
                         <MudText Class="ml-auto"><b>MYR @Total</b></MudText>
                     </div>
-                </div>
+                </div>*@
             </MudPaper>
         </MudItem>
     </MudGrid>
@@ -78,7 +81,8 @@
 
 
 @code{
-        public string PampLady { get; set; } = "PAMP SUISSE OF LADY FORTUNA- VERISCAN 10G GOLD 999.9 - COND: A";
+    public double CheckoutTime { get; set; } = 5.00;
+    public string PampLady { get; set; } = "PAMP SUISSE OF LADY FORTUNA- VERISCAN 10G GOLD 999.9 - COND: A";
     public double PampLadyPrice { get; set; } = 2959.67;
 
     public string PampCast { get; set; } = "PAMP SUISSE CAST BAR 50G GOLD 999.9 - COND: A+";
@@ -91,12 +95,26 @@
     public double NubexGoldPrice { get; set; } = 2955.4;
 
     public double Total { get; set; }
+
+    public int Timer { get; set; }
+    public int minutes { get; set; }
+    public bool IsRunning { get; set; } = true;
+    public bool IsStop { get; set; } = false;
+
     protected override void OnInitialized()
     {
-        Total = Sum();
-        base.OnInitialized();
-    }
 
+        Total = Sum();
+        InitialValue();
+        LoadTimer();
+        //base.OnInitialized();
+
+    }
+    void InitialValue()
+    {
+        Timer = 0;
+        minutes = 5;
+    }
     public double Sum()
     {
         return
@@ -104,5 +122,58 @@
         PampLadyPrice +
         KelantanGoldPrice +
         NubexGoldPrice;
+    }
+
+    public async void LoadTimer()
+    {
+        while(IsRunning)
+        {
+            await Task.Delay(1000);
+            if (Timer == 0)
+            {
+                Timer = 59;
+            }
+            else
+            {
+
+                Timer -= 1;
+            }
+
+            CheckTimer();
+            StateHasChanged();
+        }
+        Stoptime();
+    }
+     void Stoptime()
+    {
+        Timer = 0;
+        minutes = 0;
+        IsRunning = false;
+        IsStop = true;
+    }
+
+    public void CheckTimer()
+    {
+        if (Timer == 0)
+        {
+            if (minutes == 0)
+            {
+                Stoptime();
+            }
+            else
+            {
+
+                minutes -= 1;
+                if (minutes == 0)
+                {
+                    minutes = 0;
+                }
+            }
+            //Task.Delay(1000);
+            //Timer = 00;
+        }
+
+
+        StateHasChanged();
     }
 }
