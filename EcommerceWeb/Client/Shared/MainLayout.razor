@@ -5,9 +5,17 @@
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 <MudLayout>
-    <MudAppBar Elevation="2" Color="Color.Dark">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleStartDrawer" StartIcon="@(Rtl ? Icons.Filled.East : Icons.Filled.West)" />
-        <MudText Typo="Typo.h5" Class="ml-3">Application</MudText>
+    <MudAppBar Elevation="2" Color="Color.Dark" Class="bg-light">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Dark" Edge="Edge.Start" OnClick="@ToggleStartDrawer" StartIcon="@(Rtl ? Icons.Filled.East : Icons.Filled.West)" />
+        
+            <div Class="align-content-md-center">
+            <MudLink Href="/" >
+                <MudImage Src="image/nubex.png" Width="100" Height="30">
+                </MudImage>
+            </MudLink>
+            </div>
+        
+        
         <MudSpacer />
         <MudFab Color="Color.Tertiary" StartIcon="@Icons.Material.Filled.ShoppingCart" OnClick="@ToggleEndDrawer"   Size="Size.Small" />
         <div id="menuLogin" class="m-2" style="font-display:inherit;">
