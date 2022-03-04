@@ -1,9 +1,10 @@
 ﻿@page "/checkout"
-<MudContainer Class="mt12">
+<TopBar/>
+<MudContainer Class="mt-12">
     <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">Checkout</MudText>
     <MudGrid Spacing="6" Class="mt-16">
         <MudItem xs="6">
-            <MudText Typo="Typo.h5" GutterBottom="false">Billing address</MudText>
+            <MudText Typo="Typo.h5" GutterBottom="true">Billing address</MudText>
             <MudGrid>
                 <MudItem xs="12">
                     <MudTextField T="string" Label="Email" />
@@ -34,17 +35,21 @@
                 </MudItem>
             </MudGrid>
         </MudItem>
-        <MudItem xs="5">
-            <MudText Typo="Typo.h3" GutterBottom="true">Cart</MudText>
-            <MudText Typo="Typo.h6" Inline="true" Color="Color.Warning" Class="justify-content-end">@minutes.ToString()m @Timer.ToString()s Remaining</MudText>
-            <Cart/>
+
+        <MudItem xs="6">
+            <MudText Typo="Typo.h5" GutterBottom="true" Color="Color.Warning" Align="Align.End" Inline="false" Class="float-end" >@minutes.ToString()m @Timer.ToString()s remaining</MudText>
+            
+               <Cart/>
+               
+           
         </MudItem>
+                   
+            
     </MudGrid>
 </MudContainer>
 
 
 @code{
-
 
     public int Timer { get; set; }
     public int minutes { get; set; } = 5;
@@ -53,17 +58,19 @@
 
     protected override void OnInitialized()
     {
+
+    
         InitialValue();
-        if(!IsStop)
-        {
-            LoadTimer();
-        }
+        LoadTimer();
+        //base.OnInitialized();
+
     }
     void InitialValue()
     {
         Timer = 0;
         minutes = 5;
     }
+
 
     public async void LoadTimer()
     {
