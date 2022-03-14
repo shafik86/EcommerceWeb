@@ -18,12 +18,14 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 builder.Services.AddIdentityServer()
     .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+builder.Services.AddControllersWithViews();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddMudServices();
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt()
     .AddCookie();
-//builder.Services.AddSwaggerGen;
-builder.Services.AddControllersWithViews();
+builder.Services.AddSwaggerGen();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
@@ -42,7 +44,7 @@ else
 }
 
 app.UseHttpsRedirection();
-//app.UseSwaggerUI;
+app.UseSwagger();
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 
