@@ -9,9 +9,10 @@ namespace EcommerceWeb.Shared
     public class Product
     {
         public int ProductId { get; set; }
-        public string ProductCode { get; set; }
+        public string SKU { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Detail { get; set; }
         public Types Type { get; set; }
         public Metal Metal { get; set; }
         public double MetalWeight { get; set; }
