@@ -219,6 +219,7 @@ namespace EcommerceWeb.Server.Data
                    SKU = "GB9999-5g-PS-LN-2022-TGR-AA",
                    Name = "PAMP SUISSE LUNAR 2022 YEAR OF THE TIGER 5G GOLD 999.9",
                    Description = "The third year in the Lunar Calendar Series at PAMP Suisse features the image of the powerful tiger. The tiger is the worlds largest living wild cat and has a long, muscular frame with shorter legs than other members of the Panthera genus. Today, 5 Gram PAMP Suisse Lunar Tiger Gold Bars are available to you online at Nubex.",
+                   Detail= "",
                    Type = Types.MintedBar,
                    Metal = Metal.Gold,
                    MetalWeight = 5,
@@ -250,6 +251,7 @@ namespace EcommerceWeb.Server.Data
                     SKU = "GB9999-10G-PS-LF-V2-A",
                     Name = "PAMP SUISSE OF LADY FORTUNA- VERISCAN 10G GOLD 999.9",
                     Description = "This renowned brand offers an astounding range of purity, shapes and designs of multiple precious metals (gold, silver, platinum and palladium) to match the requirements of the industry.This Swiss-made PAMP gold bar is made from 10 grams of 999.9 fine gold and is shipped with an assay certificate signed by a certified assayer. ",
+                    Detail = "",
                     Type = Types.MintedBar,
                     Metal = Metal.Gold,
                     MetalWeight = 10,
@@ -281,6 +283,7 @@ namespace EcommerceWeb.Server.Data
                     SKU = "GB9999-50g-PS-CB_NC-AA",
                     Name = "PAMP SUISSE CAST BAR 50G GOLD 999.9",
                     Description = "Perfect for a medium and large scale investor, this brand new 50g of 999.9 gold cast bar is refined to perfection by PAMP. it is shipped with an assay certificate signed by a certified assayer. ",
+                    Detail= "",
                     Type = Types.CastBar,
                     Metal = Metal.Gold,
                     MetalWeight = 50,
@@ -344,7 +347,7 @@ namespace EcommerceWeb.Server.Data
             builder.Entity<Product>().HasData(
                 new Product()
                 {
-                    ProductId = 21,
+                    ProductId = 22,
                     SKU = "SC9999-1/2oz-SLS-HPTM-B",
                     Name = "SLS HARI PERAYAAN TRADISIONAL MALAYSIA 1/2OZ 999.0 SILVER COIN",
                     Description = "SLS Hari Perayaan Traditional Malaysia 1/2oz 999.9 Silver Coin \n\n Silver Lot Shop has minted this silver coin to celebrate all the major traditional celebration days in Malaysia. \n\nthis coin displays the company logo,\nthe company name,the serial number of the coin and the company website address.The reverse face displays the words “HARI PERAYAAN TRADISIONAL MALAYSIA ANNIVERSARY 2011” with drawings of an exposed kerosene lamp representing Hari Raya Celebration,a paper lantern representing Chinese New Year Celebration and betel leaves representing Deepavali Celebration. \n\nThis 1 / 2oz silver coin is placed in a beautiful maroon red presentation box with writings and design compositions in silver.Included in the box is the specification of the coin on a signed card by the CEO of the company.\n\nEach box is very suitable to be given as a gift for Hari Raya or Chinese New Year or Deepavali celebrations.",
