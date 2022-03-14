@@ -10,6 +10,9 @@ namespace EcommerceWeb.Shared
     {
         Gold,
         Silver,
+        Jewel
+        
+
 
     }
 }

@@ -24,5 +24,19 @@ namespace EcommerceWeb.Client.Pages.Shopping
             }
             return base.OnInitializedAsync();
         }
+
+        protected override Task OnParametersSetAsync()
+        {
+            if (Metal != string.Empty || Metal != "")
+            {
+                PageHeader = "Products " + Metal;
+                if (Id != string.Empty || Id != "")
+                {
+                    int.TryParse(Id, out int ProductId);
+                    PageHeader += Id;
+                }
+            }
+            return base.OnParametersSetAsync();
+        }
     }
 }

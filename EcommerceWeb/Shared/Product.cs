@@ -12,7 +12,7 @@ namespace EcommerceWeb.Shared
         public string ProductCode { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public Type Type { get; set; }
+        public Types Type { get; set; }
         public Metal Metal { get; set; }
         public double MetalWeight { get; set; }
         public string MetalBrand { get; set; }
@@ -24,14 +24,19 @@ namespace EcommerceWeb.Shared
         public bool IsTax { get; set; }
         public string Featured { get; set; }
         public double Price { get; set; }
-        public string Sex { get; set; }
+        //public string Sex { get; set; }
         public string Color { get; set; }
         public double Size { get; set; }
-        public int CategoryId { get; set; }
+        //public int CategoryId { get; set; }
         public string ProductTag { get; set; }
         public string Image1 { get; set; }
         public string Image2 { get; set; }
         public string Image3 { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.Now;
+        public string CreatedBy { get; set; } = "Administrators";
+        public DateTime ModifiedOn { get; set; }
+        public string ModifiedBy { get; set; }
+
 
 
     }
