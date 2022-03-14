@@ -37,7 +37,16 @@
                 <MudList Clickable="true">
                     <hr style="width:0%;text-align:left;margin-left:0">
                     <hr style="width:0%;text-align:left;margin-left:0">
+                    <div class="mt-auto">
+                        @*<div class="d-flex pa-4">*@
+                            <MudText>Price From</MudText>
+                        @*</div>*@
+                        <MudText Class="ml-auto"><h4>@grandtotal</h4></MudText>
+                        <MudDivider/>
+                    </div>
                     <hr style="width:0%;text-align:left;margin-left:0">
+                    <hr style="width:0%;text-align:left;margin-left:0">
+                    <MudDivider />
                     <MudListItem Class="ms-1">
                         <div class="d-flex">
                             <MudText>Condition A+</MudText> 
@@ -74,16 +83,17 @@
                         </div>
                     </MudListItem>
                     <MudDivider />
+                    <hr style="width:0%;text-align:left;margin-left:0">
+                    <MudButton Variant="Variant.Filled">Add to Cart</MudButton>
                 </MudList>
-                <div class="mt-auto">
-                    <MudDivider />
-                    <div class="d-flex pa-4">
-                        <MudText>Total:</MudText>
-                        <MudText Class="ml-auto"><b>@grandtotal</b></MudText>
-                    </div>
-                </div>
             </MudPaper>
         </MudItem>
+        <hr style="width:0%;text-align:left;margin-left:0">
+        <hr style="width:0%;text-align:left;margin-left:0">
+        <MudText Typo="Typo.h5" GutterBottom="true">Details</MudText>
+        <MudText>
+            Founded in 23 April 2000 in Edmond, Oklahoma with their first storefront opened, then launched their first website in 2004, APMEX is know known as one of only 10 worldwide Authorized Purchasers of gold, silver and platinum bullion from the US Mint. Producing their own brand of silver and gold bars and rounds, APMEX also sells other various bullion products including from PAMP Suisse, Perth Mint and other prominent brand names. Minted by APMEX, this Chinese Lunar silver coin under the Year of the Rooster makes the perfect complement to the collection, especially if you are born under the Year of the Rooster. This silver coin is made from ½ oz. of 999.0 fine silver. The obverse side of a coin showcases a rooster with the Chinese inscription of “Rooster” and its year. The reverse side of the coin features the Chinese character for Year of the Rooster attributes, which are “Brilliant, Decisive, Earnest, Candor and Smart”. The coin is ideal for investment, collection or event as a gift to your loved ones.
+        </MudText>
     </MudGrid>
 </MudContainer>
 
