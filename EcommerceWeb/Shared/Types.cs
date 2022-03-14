@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EcommerceWeb.Shared
 {
-    public enum Type
+    public enum Types
     {
         Coin,
         MintedBar,
