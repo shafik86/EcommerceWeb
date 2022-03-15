@@ -18,23 +18,23 @@ namespace EcommerceWeb.Client.Services
 
         public async Task CreateProduct(Product NewProduct)
         {
-            var result = await httpClient.PostAsJsonAsync("api/product", NewProduct);
+            var result = await httpClient.PostAsJsonAsync("api/products", NewProduct);
         }
 
         public async Task DeleteProduct(int id)
         {
-            var result = await httpClient.DeleteAsync($"api/product/{id}");
+            var result = await httpClient.DeleteAsync($"api/products/{id}");
         }
 
         public async Task<Product> GetProduct(int id)
         {
-            var result = await httpClient.GetFromJsonAsync<Product>($"api/product/{id}");
+            var result = await httpClient.GetFromJsonAsync<Product>($"api/products/{id}");
             return result;
         }
 
         public async Task<IEnumerable<Product>> GetProducts()
         {
-            var result = await httpClient.GetFromJsonAsync<IEnumerable<Product>>("api/product");
+            var result = await httpClient.GetFromJsonAsync<IEnumerable<Product>>("api/products");
             if (result != null)
             {
                 return result;
@@ -49,7 +49,7 @@ namespace EcommerceWeb.Client.Services
 
         public async Task UpdateProduct(Product UpdateProduct)
         {
-            await httpClient.PutAsJsonAsync("api/product", UpdateProduct);
+            await httpClient.PutAsJsonAsync("api/products", UpdateProduct);
         }
     }
 }
