@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 
+
 @inject NavigationManager Navigation
 @inject SignOutSessionStateManager SignOutManager
 
@@ -8,7 +9,7 @@
     <Authorized>
         <div class="justify-content-end">
             
-            <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Secondary" >Hello, @context.User.Identity?.Name</MudChip>
+            <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Secondary" OnClick="@(() => Navigation.NavigateTo("authentication/profile"))" > @context.User.Identity?.Name</MudChip>
             @*<a href="authentication/profile" style="color:violet">Hello, @context.User.Identity?.Name!</a>*@
             <MudChip Icon="@Icons.Material.Filled.Logout" Color="Color.Secondary" OnClick="BeginSignOut">Log Out</MudChip>
                 
@@ -21,6 +22,7 @@
             
             @*<a href="authentication/register" style="color:antiquewhite">Register</a>*@
             <MudChip Icon="@Icons.Material.Filled.AppRegistration" Color="Color.Info" OnClick="@(() => Navigation.NavigateTo("authentication/register"))">Register</MudChip>
+            @*<MudChip Icon="@Icons.Material.Filled.Login" Color="Color.Success" OnClick="@(() => Navigation.NavigateTo("authentication/login"))">Login</MudChip>*@
             <MudChip Icon="@Icons.Material.Filled.Login" Color="Color.Success" OnClick="@(() => Navigation.NavigateTo("authentication/login"))">Login</MudChip>
             
             @*<a href="authentication/login" style="color:antiquewhite">Log in</a>*@
@@ -45,5 +47,6 @@
     {
         await SignOutManager.SetSignOutState();
         Navigation.NavigateTo("authentication/logout");
+        //Navigation.NavigateTo("account/logout");
     }
 }

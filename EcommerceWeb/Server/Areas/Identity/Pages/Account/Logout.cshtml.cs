@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Components;
 
 namespace EcommerceWeb.Server.Areas.Identity.Pages.Account
 {
@@ -17,6 +18,8 @@ namespace EcommerceWeb.Server.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LogoutModel> _logger;
+        
+        //private NavigationManager _navigationManager;
 
         public LogoutModel(SignInManager<ApplicationUser> signInManager, ILogger<LogoutModel> logger)
         {
@@ -24,7 +27,7 @@ namespace EcommerceWeb.Server.Areas.Identity.Pages.Account
             _logger = logger;
         }
 
-        public async Task<IActionResult> OnPost(string returnUrl = null)
+        public async Task<IActionResult> OnPost(string returnUrl = "/")
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
@@ -36,7 +39,8 @@ namespace EcommerceWeb.Server.Areas.Identity.Pages.Account
             {
                 // This needs to be a redirect so that the browser performs a new
                 // request and the identity for the user gets updated.
-                return RedirectToPage();
+               return RedirectToPage();
+                //_navigationManager.NavigateTo("/");
             }
         }
     }
