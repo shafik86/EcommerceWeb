@@ -13,49 +13,47 @@ namespace EcommerceWeb.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class ConditionsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public ProductsController(ApplicationDbContext context)
+        public ConditionsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        //Search Products By Name, Metal
-
-        // GET: api/Products
+        // GET: api/Conditions
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<Condition>>> GetConditions()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Conditions.ToListAsync();
         }
 
-        // GET: api/Products/5
+        // GET: api/Conditions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<Condition>> GetCondition(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var condition = await _context.Conditions.FindAsync(id);
 
-            if (product == null)
+            if (condition == null)
             {
                 return NotFound();
             }
 
-            return product;
+            return condition;
         }
 
-        // PUT: api/Products/5
+        // PUT: api/Conditions/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<IActionResult> PutCondition(int id, Condition condition)
         {
-            if (id != product.ProductId)
+            if (id != condition.ConditionId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(product).State = EntityState.Modified;
+            _context.Entry(condition).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +61,7 @@ namespace EcommerceWeb.Server.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(id))
+                if (!ConditionExists(id))
                 {
                     return NotFound();
                 }
@@ -76,36 +74,36 @@ namespace EcommerceWeb.Server.Controllers
             return NoContent();
         }
 
-        // POST: api/Products
+        // POST: api/Conditions
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        public async Task<ActionResult<Condition>> PostCondition(Condition condition)
         {
-            _context.Products.Add(product);
+            _context.Conditions.Add(condition);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProduct", new { id = product.ProductId }, product);
+            return CreatedAtAction("GetCondition", new { id = condition.ConditionId }, condition);
         }
 
-        // DELETE: api/Products/5
+        // DELETE: api/Conditions/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        public async Task<IActionResult> DeleteCondition(int id)
         {
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
+            var condition = await _context.Conditions.FindAsync(id);
+            if (condition == null)
             {
                 return NotFound();
             }
 
-            _context.Products.Remove(product);
+            _context.Conditions.Remove(condition);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ProductExists(int id)
+        private bool ConditionExists(int id)
         {
-            return _context.Products.Any(e => e.ProductId == id);
+            return _context.Conditions.Any(e => e.ConditionId == id);
         }
     }
 }
