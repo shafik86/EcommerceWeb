@@ -1,0 +1,116 @@
+﻿@page "/ItemDetail"
+
+<TopBar/>
+<hr style="width:0%;text-align:left;margin-left:0"> 
+<MudContainer Class="mt-16" MaxWidth="MaxWidth.Medium">
+    <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">Detail</MudText>
+    <MudGrid Spacing="6" Class="mt-16">
+        <MudItem xs="7">
+            <MudText Typo="Typo.h5" GutterBottom="true">
+                Name Item
+            </MudText>
+            <MudGrid>
+                <MudItem xs="12">
+                    <img src="Image/aa.jpg" alt="..."style="height:500px; width:500px;">
+                </MudItem>
+                <MudItem xs="12" Class="d-flex">
+                    <MudLink Href="#">
+                    <MudButton Class="justify-start">
+                        <img src="Image/bb.jpg" alt="..."style="height:150px; width:150px;">
+                    </MudButton>
+                    </MudLink>
+                    <MudLink Href="#">
+                    <MudButton Class="justify-center">
+                        <img src="Image/cc.jpg" alt="..."style="height:150px; width:150px;">
+                    </MudButton>
+                    </MudLink>
+                    <MudLink Href="#">
+                    <MudButton Class="justify-end">
+                        <img src="Image/dd.jpg" alt="..."style="height:150px; width:150px;">
+                    </MudButton>
+                    </MudLink>
+                </MudItem>
+            </MudGrid>
+        </MudItem>
+        <MudItem xs="5">
+            <MudPaper Class="d-flex flex-column" Style="height:100%;" Elevation="0" >
+                <MudList Clickable="true">
+                    <hr style="width:0%;text-align:left;margin-left:0">
+                    <hr style="width:0%;text-align:left;margin-left:0">
+                    <div class="mt-auto">
+                        @*<div class="d-flex pa-4">*@
+                            <MudText>Price From</MudText>
+                        @*</div>*@
+                        <MudText Class="ml-auto"><h4>@grandtotal</h4></MudText>
+                        <MudDivider/>
+                    </div>
+                    <hr style="width:0%;text-align:left;margin-left:0">
+                    <hr style="width:0%;text-align:left;margin-left:0">
+                    <MudDivider />
+                    <MudListItem Class="ms-1">
+                        <div class="d-flex">
+                            <MudText>Condition A+</MudText> 
+                        </div>
+                    </MudListItem>
+                    <MudDivider />
+                    <MudListItem Class="ms-1">
+                        <div class="d-flex">
+                            <MudText>Condition A</MudText>
+                        </div>
+                    </MudListItem>
+                    <MudDivider />
+                    <MudListItem Class="ms-1">
+                        <div class="d-flex">
+                            <MudText>Condition B</MudText>
+                        </div>
+                    </MudListItem>
+                    <MudDivider />
+                    <MudListItem Class="ms-1">
+                        <div class="d-flex">
+                            <MudText>Condition B+</MudText> 
+                        </div>
+                    </MudListItem>
+                    <MudDivider />
+                    <MudListItem Class="ms-1">
+                        <div class="d-flex">
+                            <MudText>Condition C+</MudText> 
+                        </div>
+                    </MudListItem>
+                    <MudDivider />
+                    <MudListItem Class="ms-1">
+                        <div class="d-flex">
+                            <MudText>Condition C</MudText> 
+                        </div>
+                    </MudListItem>
+                    <MudDivider />
+                    <hr style="width:0%;text-align:left;margin-left:0">
+                    <MudButton Variant="Variant.Filled">Add to Cart</MudButton>
+                </MudList>
+            </MudPaper>
+        </MudItem>
+        <hr style="width:0%;text-align:left;margin-left:0">
+        <hr style="width:0%;text-align:left;margin-left:0">
+        <MudText Typo="Typo.h5" GutterBottom="true">Details</MudText>
+        <MudText>
+            Founded in 23 April 2000 in Edmond, Oklahoma with their first storefront opened, then launched their first website in 2004, APMEX is know known as one of only 10 worldwide Authorized Purchasers of gold, silver and platinum bullion from the US Mint. Producing their own brand of silver and gold bars and rounds, APMEX also sells other various bullion products including from PAMP Suisse, Perth Mint and other prominent brand names. Minted by APMEX, this Chinese Lunar silver coin under the Year of the Rooster makes the perfect complement to the collection, especially if you are born under the Year of the Rooster. This silver coin is made from ½ oz. of 999.0 fine silver. The obverse side of a coin showcases a rooster with the Chinese inscription of “Rooster” and its year. The reverse side of the coin features the Chinese character for Year of the Rooster attributes, which are “Brilliant, Decisive, Earnest, Candor and Smart”. The coin is ideal for investment, collection or event as a gift to your loved ones.
+        </MudText>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    public string TimeRemaining { get; set; } = "12h 10m 59s";
+    public int spacing { get; set; } = 2;
+    public string TextValue { get; set; }
+    public double currentprice { get; set; } = 2000;
+    public double BidTotal { get; set; } = 0;
+    public double grandtotal { get; set; } = 0;
+    public double userbid { get; set; }
+
+    void Bid()
+    {
+        BidTotal = BidTotal + userbid;
+        grandtotal = BidTotal + currentprice;
+        userbid = 0;
+
+    }
+}
