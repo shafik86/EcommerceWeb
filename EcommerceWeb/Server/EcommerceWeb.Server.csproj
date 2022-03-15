@@ -39,6 +39,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Pages\Shared\" />
+    <Folder Include="wwwroot\Image\" />
   </ItemGroup>
 
   <ItemGroup>
