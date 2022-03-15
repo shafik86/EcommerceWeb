@@ -9,7 +9,7 @@
     <Authorized>
         <div class="justify-content-end">
             
-            <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Secondary" OnClick="@(() => Navigation.NavigateTo("account/ExternalLogin"))" > @context.User.Identity?.Name</MudChip>
+            <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Secondary" OnClick="@(() => Navigation.NavigateTo("authentication/profile"))" > @context.User.Identity?.Name</MudChip>
             @*<a href="authentication/profile" style="color:violet">Hello, @context.User.Identity?.Name!</a>*@
             <MudChip Icon="@Icons.Material.Filled.Logout" Color="Color.Secondary" OnClick="BeginSignOut">Log Out</MudChip>
                 
