@@ -6,5 +6,6 @@ namespace EcommerceWeb.Server.Models.Repository
     {
         IEnumerable<Condition> GetConditions();
         Condition GetCondition(int conditionId);
+        
     }
 }
