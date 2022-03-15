@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EcommerceWeb.Server.Data;
 using EcommerceWeb.Shared;
+using EcommerceWeb.Server.Models.Repository;
 
 namespace EcommerceWeb.Server.Controllers
 {
@@ -15,18 +16,18 @@ namespace EcommerceWeb.Server.Controllers
     [ApiController]
     public class ConditionsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IConditionRepository conditionRepository;
 
-        public ConditionsController(ApplicationDbContext context)
+        public ConditionsController(IConditionRepository conditionRepository)
         {
-            _context = context;
+            this.conditionRepository = conditionRepository;
         }
 
         // GET: api/Conditions
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Condition>>> GetConditions()
         {
-            return await _context.Conditions.ToListAsync();
+            return Ok( await conditionRepository.GetConditions());
         }
 
         // GET: api/Conditions/5
