@@ -37,4 +37,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Pages\Shared\" />
+  </ItemGroup>
+
 </Project>
