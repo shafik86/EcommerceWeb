@@ -1,0 +1,51 @@
+﻿@page "/ProductTable"
+
+<h3>ProductTable</h3>
+
+
+@if(Loading)
+{
+    <MudProgressLinear Color="Color.Secondary" Indeterminate="true" Class="my-7"/>
+}
+else
+{
+    <MudContainer>
+        <MudTable Items="@Products" Dense="@dense" Hover="@hover" Bordered="@bordered" Striped="@striped"  @bind-SelectedItem="selectedItem1">
+            <ToolBarContent>
+                <MudText Typo="Typo.h6">Products Elements</MudText>
+                <MudSpacer />
+                <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+            </ToolBarContent>
+            <HeaderContent>
+                <MudTh>Nr</MudTh>
+                <MudTh>Sign</MudTh>
+                <MudTh>Name</MudTh>
+                <MudTh>Position</MudTh>
+                <MudTh>Molar mass</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Nr">@context.Name</MudTd>
+                <MudTd DataLabel="Sign">@context.Metal</MudTd>
+                <MudTd DataLabel="Name">@context.Type</MudTd>
+                <MudTd DataLabel="Position">@context.MetalWeight</MudTd>
+                <MudTd DataLabel="Molar mass">@context.Price</MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager />
+            </PagerContent>
+        </MudTable>
+
+        <div class="d-flex flex-wrap mt-4">
+            <MudSwitch @bind-Checked="@hover" Color="Color.Primary">Hover</MudSwitch>
+            <MudSwitch @bind-Checked="@dense" Color="Color.Secondary">Dense</MudSwitch>
+            <MudSwitch @bind-Checked="@striped" Color="Color.Tertiary">Striped</MudSwitch>
+            <MudSwitch @bind-Checked="@bordered" Color="Color.Warning">Bordered</MudSwitch>
+            <MudSpacer />
+            <div style="min-width:200px;">
+                <MudText Inline="true" Class="align-self-center">Selected1: @selectedItem1?.Name</MudText>
+            </div>
+        </div>
+    </MudContainer>
+}
+
+

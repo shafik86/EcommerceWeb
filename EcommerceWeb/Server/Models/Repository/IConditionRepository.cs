@@ -4,8 +4,8 @@ namespace EcommerceWeb.Server.Models.Repository
 {
     public interface IConditionRepository
     {
-        IEnumerable<Condition> GetConditions();
-        Condition GetCondition(int conditionId);
+        Task<IEnumerable<Condition>> GetConditions();
+        Task<Condition> GetCondition(int conditionId);
         
     }
 }

@@ -5,5 +5,6 @@ namespace EcommerceWeb.Server.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        //use code here
     }
 }

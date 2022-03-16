@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using EcommerceWeb.Client.Services;
+using EcommerceWeb.Server.Models.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +32,8 @@ builder.Services.AddAuthentication()
 builder.Services.AddSwaggerGen();
 builder.Services.AddRazorPages();
 
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IConditionRepository, ConditionRepository>();
 var app = builder.Build();
 app.UseSwaggerUI();
 // Configure the HTTP request pipeline.
