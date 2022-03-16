@@ -8,8 +8,11 @@ namespace EcommerceWeb.Client.Pages
     public partial class ProductTable : ComponentBase
     {
         [Inject]
-        public IProductServices ProductServices { get; set; }
+        public HttpClient httpClient { get; set; }
+        [Inject]
+        public IProductServices? ProductServices { get; set; }
         public IEnumerable<Product> Products { get; set; } = new List<Product>();
+        public bool Loading { get; set; } = true;
         private bool dense = false;
         private bool hover = true;
         private bool striped = false;
@@ -23,8 +26,9 @@ namespace EcommerceWeb.Client.Pages
         protected override async Task OnInitializedAsync()
         {
             //Elements = await httpClient.GetFromJsonAsync<List<Element>>("webapi/periodictable");
-            //var result = await ProductServices.GetProducts();
+            //Products = await httpClient.GetFromJsonAsync<IEnumerable<Product>>("api/products");
             Products = await ProductServices.GetProducts();
+            Loading = false;
         }
 
         private bool FilterFunc1(Product element) => FilterFunc(element, searchString1);

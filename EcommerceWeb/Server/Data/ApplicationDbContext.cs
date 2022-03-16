@@ -7,6 +7,7 @@ using Microsoft.Extensions.Options;
 
 namespace EcommerceWeb.Server.Data
 {
+    //ApiAuthorizationDbContext<ApplicationUser>
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
         public ApplicationDbContext(
