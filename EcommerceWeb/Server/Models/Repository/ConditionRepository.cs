@@ -1,5 +1,6 @@
 ﻿using EcommerceWeb.Server.Data;
 using EcommerceWeb.Shared;
+using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceWeb.Server.Models.Repository
 {
@@ -11,15 +12,14 @@ namespace EcommerceWeb.Server.Models.Repository
         {
             this.appDbContext = applicationDbContext;
         }
-        public Condition GetCondition(int conditionId)
+        public async Task<Condition> GetCondition(int conditionId)
         {
-            return appDbContext.Conditions
-                .FirstOrDefault(d => d.ConditionId == conditionId);
+            return await appDbContext.Conditions.FirstOrDefaultAsync(e => e.ConditionId == conditionId);
         }
 
-        public IEnumerable<Condition> GetConditions()
+        public async Task<IEnumerable<Condition>> GetConditions()
         {
-            return appDbContext.Conditions.ToList();
+            return await appDbContext.Conditions.ToListAsync();
         }
     }
 }

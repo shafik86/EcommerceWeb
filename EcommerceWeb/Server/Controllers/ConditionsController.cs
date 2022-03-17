@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EcommerceWeb.Server.Data;
 using EcommerceWeb.Shared;
+using EcommerceWeb.Server.Models.Repository;
 
 namespace EcommerceWeb.Server.Controllers
 {
@@ -15,25 +16,25 @@ namespace EcommerceWeb.Server.Controllers
     [ApiController]
     public class ConditionsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IConditionRepository conditionRepository;
 
-        public ConditionsController(ApplicationDbContext context)
+        public ConditionsController(IConditionRepository conditionRepository)
         {
-            _context = context;
+            this.conditionRepository = conditionRepository;
         }
 
         // GET: api/Conditions
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Condition>>> GetConditions()
         {
-            return await _context.Conditions.ToListAsync();
+            return Ok( await conditionRepository.GetConditions());
         }
 
         // GET: api/Conditions/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Condition>> GetCondition(int id)
         {
-            var condition = await _context.Conditions.FindAsync(id);
+            var condition = await conditionRepository.GetCondition(id);
 
             if (condition == null)
             {
@@ -43,67 +44,67 @@ namespace EcommerceWeb.Server.Controllers
             return condition;
         }
 
-        // PUT: api/Conditions/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCondition(int id, Condition condition)
-        {
-            if (id != condition.ConditionId)
-            {
-                return BadRequest();
-            }
+        //// PUT: api/Conditions/5
+        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutCondition(int id, Condition condition)
+        //{
+        //    if (id != condition.ConditionId)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(condition).State = EntityState.Modified;
+        //    _context.Entry(condition).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ConditionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!ConditionExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
-        // POST: api/Conditions
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Condition>> PostCondition(Condition condition)
-        {
-            _context.Conditions.Add(condition);
-            await _context.SaveChangesAsync();
+        //// POST: api/Conditions
+        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPost]
+        //public async Task<ActionResult<Condition>> PostCondition(Condition condition)
+        //{
+        //    _context.Conditions.Add(condition);
+        //    await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCondition", new { id = condition.ConditionId }, condition);
-        }
+        //    return CreatedAtAction("GetCondition", new { id = condition.ConditionId }, condition);
+        //}
 
-        // DELETE: api/Conditions/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCondition(int id)
-        {
-            var condition = await _context.Conditions.FindAsync(id);
-            if (condition == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/Conditions/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteCondition(int id)
+        //{
+        //    var condition = await _context.Conditions.FindAsync(id);
+        //    if (condition == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.Conditions.Remove(condition);
-            await _context.SaveChangesAsync();
+        //    _context.Conditions.Remove(condition);
+        //    await _context.SaveChangesAsync();
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
-        private bool ConditionExists(int id)
-        {
-            return _context.Conditions.Any(e => e.ConditionId == id);
-        }
+        //private bool ConditionExists(int id)
+        //{
+        //    return _context.Conditions.Any(e => e.ConditionId == id);
+        //}
     }
 }
