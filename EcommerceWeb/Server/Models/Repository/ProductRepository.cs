@@ -55,20 +55,17 @@ namespace EcommerceWeb.Server.Models.Repository
             return await appDbContext.Products.ToListAsync();
         }
 
-        public async Task<IEnumerable<Product>> SearchProduct(string name, Metal? metal)
+        public async Task<IEnumerable<Product>> SearchProduct(Metal? metal)
         {
             //var 
             IQueryable<Product> query = appDbContext.Products;
-
-            if (!string.IsNullOrEmpty(name))
-            {
-                query = query.Where(e => e.Name.Contains(name) || e.Manufacture.Contains(name));
-            }
 
             if (metal is not null)
             {
                 query = query.Where(e => e.Metal == metal);
             }
+
+ 
 
             return await query.ToListAsync();
         }
@@ -78,9 +75,14 @@ namespace EcommerceWeb.Server.Models.Repository
             throw new NotImplementedException();
         }
 
-        Task<IEnumerable<Product>> IProductRepository.GetProductByMetal(Metal? metal)
-        {
-            throw new NotImplementedException();
-        }
+        //async Task<IEnumerable<Product>> IProductRepository.GetProductByMetal(string metal)
+        //{
+        //    IQueryable<Product> query = appDbContext.Products;
+        //    if (!string.IsNullOrEmpty(metal))
+        //    {
+        //        query = query.Where(e => e.Metal.Equals(metal));
+        //    }
+        //    return await query.ToListAsync();
+        //}
     }
 }

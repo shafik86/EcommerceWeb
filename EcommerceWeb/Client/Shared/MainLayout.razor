@@ -30,8 +30,16 @@
             <ShoppingCart />
         </MudDrawer>
     <MudMainContent>
-        <TopBar/>
-        @Body
+        @if(topbar)
+        {
+            <TopBar/>
+            @Body
+        }
+        @if(!topbar)
+        {
+            @Body
+            
+        }
         <FooterBar/>
     </MudMainContent>
 </MudLayout>
@@ -43,11 +51,15 @@
 
     bool openStart = false;
     bool openEnd = false;
+    bool topbar = true;
 
     void ToggleStartDrawer()
     {
         openStart = !openStart;
-        //_drawerOpen = !_drawerOpen;
+        if (openStart)
+            topbar = false;
+        else
+            topbar = true;
     }
 
     void ToggleEndDrawer()

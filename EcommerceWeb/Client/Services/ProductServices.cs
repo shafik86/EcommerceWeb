@@ -32,6 +32,12 @@ namespace EcommerceWeb.Client.Services
             return result;
         }
 
+        public async Task<IEnumerable<Product>> SearcProduct(string metal)
+        {
+            var result = await httpClient.GetFromJsonAsync<IEnumerable<Product>>($"api/products/search?metal={metal}");
+            return result;
+        }
+
         public async Task<IEnumerable<Product>> GetProducts()
         {
             var result = await httpClient.GetFromJsonAsync<IEnumerable<Product>>("api/products");
