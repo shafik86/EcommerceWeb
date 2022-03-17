@@ -1,0 +1,295 @@
+﻿<div class="header content"><span data-action="toggle-nav" class="action nav-toggle"><span>Toggle Nav</span></span>
+    <a class="logo" href="https://www.nubex.my/" title="">
+        <img src="https://www.nubex.my/pub/media/logo/stores/1/Nubex_logo_crop1_1.png" alt="" width="181" height="39">
+    </a>
+<div class="header_right">
+<div data-block="minicart" class="minicart-wrapper quickcart-wrapper minicart-weltpixel">
+    <a class="action showcart" href="https://www.nubex.my/checkout/cart/" data-bind="scope: 'minicart_content'">
+        <span class="text">My Cart</span>
+        <span class="counter qty empty" data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading">
+            <span class="counter-number"><!-- ko text: getCartParam('summary_count') -->0<!-- /ko --></span>
+            <span class="counter-label">
+            <!-- ko if: getCartParam('summary_count') --><!-- /ko -->
+            </span>
+        </span>
+    </a>
+            
+        <script>
+        window.checkout = {"shoppingCartUrl":"https:\/\/www.nubex.my\/checkout\/cart\/","checkoutUrl":"https:\/\/www.nubex.my\/checkout\/","updateItemQtyUrl":"https:\/\/www.nubex.my\/checkout\/sidebar\/updateItemQty\/","removeItemUrl":"https:\/\/www.nubex.my\/checkout\/sidebar\/removeItem\/","imageTemplate":"Magento_Catalog\/product\/image","baseUrl":"https:\/\/www.nubex.my\/","minicartMaxItemsVisible":5,"websiteId":"1","maxItemsToDisplay":10,"customerLoginUrl":"https:\/\/www.nubex.my\/customer\/account\/login\/","isRedirectRequired":false,"autocomplete":"off","captcha":{"user_login":{"isCaseSensitive":false,"imageHeight":50,"imageSrc":"","refreshUrl":"https:\/\/www.nubex.my\/captcha\/refresh\/","isRequired":false},"guest_checkout":{"isCaseSensitive":false,"imageHeight":50,"imageSrc":"","refreshUrl":"https:\/\/www.nubex.my\/captcha\/refresh\/","isRequired":false}}};
+    </script>
+    
+
+            <style>
+        .block-content-quickcart .quickcart-top {
+            background: #000000;
+            color: #FFFFFF;
+            height: 50px;
+            line-height: 50px;
+        }
+        .block-content-quickcart .quickcart-top button.close {
+            height: 50px;
+        }
+        .block-content-quickcart .quickcart-top button.close span {
+            color: #FFFFFF;
+        }
+        .block-content-quickcart .quickcart-top .action.close::before {
+            color: #FFFFFF;
+        }
+        .block-content-quickcart .quickcart-bottom-container .subtotal {
+            background: #F6F6F6;
+            color: #000000;
+        }
+            </style>
+<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front mage-dropdown-dialog" tabindex="-1" role="dialog" aria-describedby="ui-id-1" style="display: none;"><div class="block block-minicart block-quickcart empty ui-dialog-content ui-widget-content" data-role="dropdownDialog" id="ui-id-1" style="display: block;">
+            <div id="minicart-content-wrapper" class="quickcart-content-wrapper" data-bind="scope: 'minicart_content'">
+                <!-- ko template: getTemplate() --><div class="block-title">
+    <strong>
+        <span class="text"><!-- ko i18n: 'My Cart' --><span>My Cart</span><!-- /ko --></span>
+        <span class="qty empty" data-bind="css: { empty: !!getCartParam('summary_count') == false },
+                         attr: { title: $t('Items in Cart') }" title="Items in Cart">
+            <!-- ko text: getCartParam('summary_count') -->0<!-- /ko -->
+        </span>
+    </strong>
+</div>
+
+<div class="block-content block-content-quickcart">
+    <div class="quickcart-top">
+        <span class="text"><!-- ko i18n: 'My Cart' --><span>My Cart</span><!-- /ko --></span>
+
+        <button type="button" id="btn-minicart-close" class="action close" data-action="close" data-bind="attr: { title: $t('Close') }" title="Close">
+            <span><!-- ko i18n: 'Close' --><span>Close</span><!-- /ko --></span>
+        </button>
+
+    </div>
+
+    <strong class="subtitle"><!-- ko i18n: 'Recently added item(s)' --><span>Recently added item(s)</span><!-- /ko --></strong>
+    <div data-action="scroll" class="minicart-items-wrapper quickcart-items-wrapper">
+        <ol id="mini-cart" class="minicart-items quickcart-items" data-bind="foreach: { data: getCartParam('items'), as: 'item' }"></ol>
+    </div>
+
+    <!-- ko ifnot: getCartParam('summary_count') -->
+        <strong class="subtitle empty" data-bind="visible: closeSidebar()">
+            <!-- ko i18n: 'You have no items in your shopping cart.' --><span>You have no items in your shopping cart.</span><!-- /ko -->
+        </strong>
+        <!-- ko if: getCartParam('cart_empty_message') --><!-- /ko -->
+    <!-- /ko -->
+
+
+
+    <!-- ko if: getCartParam('summary_count') --><!-- /ko -->
+</div>
+<!-- ko foreach: getRegion('sign-in-popup') --><!-- /ko -->
+<!-- /ko -->
+            </div>
+                    </div></div></div>
+</div><script>
+    window.exchangeMinicart = {"priceFormat":{"pattern":"MYR%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":1},"isCustomerLoggedIn":false,"isCustomerLoginRequired":false};
+</script>
+<div class="wrap">
+    <div id="search-mod" class="modal">
+        <div class="close-sec search-visible-md">
+            <a class="closebutton icon-line-cross"></a>
+        </div>
+        <div class="modal-content">
+            <div class="block block-search wpx-block-search">
+                <div class="block block-content">
+                    <form class="form minisearch version-2" id="search_mini_form" action="https://www.nubex.my/catalogsearch/result/" method="get">
+                        <div class="field search wpx-pos-search">
+                            <label class="label" for="search" data-role="minisearch-label">
+                                <span>Search</span>
+                            </label>
+                            <div class="control vertically-control">
+                                <input id="search" type="text" name="q" value="" placeholder="Type at least 3 characters to search" class="input-text vertically-black" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off">
+
+                                <div class="actions wpx-pos-search search-visible-md">
+                                    <button type="submit" class="action search" title="Search" disabled=""></button>
+                                </div>
+
+
+                                
+                                    <div id="searchautocomplete" class="searchautocomplete vertically" style="width: 350px; background: #FFFFFF; color: #000000">
+                    <div class="separator" style="background: #F0EFF0; color:#000000">Popular Suggestions</div>
+            <div id="search_autocomplete" class="wpx-search-autocomplete" style="display: none;"></div>
+        
+                    <div class="container-autocomplete cat-container"></div>
+        
+                                <div class="container-autocomplete">
+                                    <div class="wpx-header"><div class="sale"> <p><b>Top</b> matches found</p> </div> <style> .sale{ margin: 0 auto; background: #242424; color: white; padding: 10px; text-align: center; font-size: 13px; } </style></div>
+                                <div class="prod-container"></div>
+                <div class="more-results">
+                    <a onclick="document.getElementById('search_mini_form').submit()" class="advanced_search"></a>
+                </div>
+                                    <div class="wpx-footer"><!-- <div class="free-returns"> <div class="footer-img"></div> </div> <style> .free-returns{ margin: 0 auto; background: #242424;padding:10px; } </style> -->
+<div class="footer-ajax-search-result">Click see all results to view all</div> <style> .footer-ajax-search-result{ margin: 0 auto; background: #242424; color: white; padding: 10px; text-align: center; font-size: 13px; } </style></div>
+                            </div>
+            </div>
+
+
+    <script>
+        requirejs(['jquery', 'underscore', 'weltpixel_searchautocomplete'],
+            function ($, _, searchAutoComplete) {
+                $(document).ready(function () {
+                    var isEnablePopularSuggestions = '1',
+                        isEnableCategorySearch = '1',
+                        isEnableAutoComplete = '1',
+                        previousSearch = '';
+                    window.minNumberOfCharacters = '3';
+                    window.baseURL = 'https://www.nubex.my/';
+                    $('html').on('click', function(event){
+                        var targetClass = $(event.target).attr('class'),
+                            searchClass = 'searchautocomplete';
+                        if(targetClass != searchClass)
+                            $('#' + searchClass).hide();
+                    })
+                    if (isEnableAutoComplete || isEnablePopularSuggestions || isEnableCategorySearch) {
+                        $('.search-autocomplete').remove();
+
+                        $('#search').on('keyup', _.debounce(function () {
+                            var value = $(this).val();
+                            if (value == previousSearch && $('#search_autocomplete').is(':visible')) {
+                                return;
+                            }
+                            previousSearch = value;
+                            if (isEnableAutoComplete && value.length >= window.minNumberOfCharacters) {
+                                //Start processing, show the Progress!
+                                $(".search .control").addClass("loader-ajax");
+                                searchAutoComplete.ajaxSearch();
+                            }else{
+                                $('#searchautocomplete').hide();
+                            }
+                        }, 750));
+                    }
+                });
+            });
+    </script>
+<div class="nested">
+    <a class="action advanced" href="https://www.nubex.my/catalogsearch/advanced/" data-action="advanced-search">
+        Advanced Search    </a>
+</div>
+
+                                            </div>
+                        </div>
+                    </form>
+                    <div class="customHtml">
+                        <p class="search-description"> <span># Type at least 3 character to search</span> <span># Hit enter to search</span> </p> <style> .search-description{ padding: 10px 20px; } .search-description span{ color: #F8F8F8; margin-right: 20px; } </style>                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="block block-search search-visible-md minisearch-v2">
+    <div class="block block-content">
+        <i class="open-modal-search icon-search3"></i>
+    </div>
+</div>
+
+<script>
+    require(['jquery'],
+        function ($) {
+
+            var resizeIdClose,
+                searchMod = $("#search-mod"),
+                searchInput = $('#search'),
+                ua = window.navigator.userAgent,
+                msie = ua.indexOf("MSIE ");
+
+            $(window).resize(function() {
+                clearTimeout(resizeIdClose);
+            });
+
+            if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+                $( ".open-modal-search" ).wrap( "<a href='#search-mod'></a>" );
+            }
+
+            $(".open-modal-search").on('click', function(){
+                if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)){
+                    searchMod.addClass("isOpenIE");
+                }
+                searchMod.addClass("isOpen");
+                setTimeout(function(){ searchInput.select(); }, 500);
+                window.location.hash = 'search-mod';
+                if($('.page-header').hasClass('page-header-v4')){
+                    $(".nav-sections-4.sticky-header").attr('style', 'z-index: 0 !important');
+                    $(".nav-toggle, .logo").attr('style', 'z-index: 0');
+                }
+                window.history.pushState("", document.title, window.location.pathname);
+            });
+
+            $(".block.block-content").on('click', function(){
+                onClickSearchBtn(searchMod);
+            });
+
+            $(".closebutton").on('click', function(e){
+                closeSearchModal(searchMod);
+                window.location.hash = 'search-mod';
+                setTimeout(function(){
+                    window.location.hash= '#';
+                    window.history.pushState("", document.title, window.location.pathname);
+                    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)){
+                        searchMod.removeClass("isOpenIE");
+                    }
+                }, 500);
+
+                if($('.page-header').hasClass('page-header-v4')) {
+                    $(".nav-sections-4.sticky-header").attr('style', 'z-index: 10 !important');
+                    setTimeout(function(){
+                        $(".nav-toggle, .logo").attr('style', 'z-index: 14');
+                    }, 500);
+                }
+            });
+
+            function onClickSearchBtn(searchMod){
+                if(searchMod.hasClass( "isOpen" )){
+                    $('body').addClass("hidescroll");
+                    $('.actions.wpx-pos-search button').prop("disabled", false); // Search button are now enabled.
+                }
+            }
+
+            function closeSearchModal(searchMod){
+                if (searchMod.length) {
+                    searchInput.val('');
+                    setTimeout(function(){
+                        $('body').removeClass('hidescroll');
+                        $('#searchautocomplete').hide();
+                    }, 10);
+                }
+            }
+        }
+    );
+
+</script>
+<script>
+    window.nubexQuote = {"url":"https:\/\/www.nubex.my\/quote\/","refresh":"https:\/\/www.nubex.my\/quote\/index\/refresh\/","priceFormat":{"pattern":"MYR%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":1}};
+</script>    
+<div class="sections nav-sections-3 nav-sections">
+                <div class="section-items nav-sections-3 nav-sections-items" role="tablist">
+                                            <div class="section-item-title nav-sections-3 nav-sections-item-title active" data-role="collapsible" role="tab" data-collapsible="true" aria-controls="store.menu" aria-selected="false" aria-expanded="true" tabindex="0">
+                    <a class="nav-sections-3 nav-sections-item-switch" data-toggle="switch" href="#store.menu">Menu</a>
+                </div>
+                <div class="section-item-content nav-sections-3 nav-sections-item-content" id="store.menu" data-role="content" role="tabpanel" aria-hidden="false">
+<nav class="navigation" data-action="navigation">
+    <ul id="ui-id-2" class="ui-menu ui-widget ui-widget-content ui-corner-all" role="menu" tabindex="0" aria-activedescendant="ui-id-8">
+        <li class="megamenu level-top-sectioned  level0 nav-1 category-item first level-top parent ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/silver.html" class="level-top ui-corner-all" aria-haspopup="true" id="ui-id-3" tabindex="-1" role="menuitem"><span class="ui-menu-icon ui-icon ui-icon-carat-1-e"></span><span>Silver</span></a><ul class="level0 submenu sectioned   top-moved ui-menu ui-widget ui-widget-content ui-corner-all" style="top: 56px; left: 211.5px; display: none;" role="menu" aria-expanded="false" aria-hidden="true"><li class="submenu-child ui-menu-item" role="presentation"><ul class="columns-group starter ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="width: auto; display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level1 nav-1-1 category-item first ui-menu-item" style="width: auto" data-test="test" role="presentation"><a href="https://www.nubex.my/silver/silver-coin.html" id="ui-id-9" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Silver Coin</span></a></li></ul><ul class="columns-group inner ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="width: auto; display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level1 nav-1-2 category-item ui-menu-item" style="width: auto" data-test="test" role="presentation"><a href="https://www.nubex.my/silver/silver-bar.html" id="ui-id-10" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Silver Bar</span></a></li></ul><ul class="columns-group inner ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="width: auto; display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level1 nav-1-3 category-item ui-menu-item" style="width: auto" data-test="test" role="presentation"><a href="https://www.nubex.my/silver/silver-dirham.html" id="ui-id-11" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Silver Dirham</span></a></li></ul><ul class="columns-group inner ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="width: auto; display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level1 nav-1-4 category-item last ui-menu-item" style="width: auto" data-test="test" role="presentation"><a href="https://www.nubex.my/silver/silver-card.html" id="ui-id-12" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Silver Card</span></a></li><span class="close columns-group last ui-widget-content ui-menu-divider"></span></ul></li><!-- end submenu-child --></ul><!-- end submenu --></li><li class="megamenu level-top-sectioned  level0 nav-2 category-item level-top parent ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/gold.html" class="level-top ui-corner-all" aria-haspopup="true" id="ui-id-4" tabindex="-1" role="menuitem"><span class="ui-menu-icon ui-icon ui-icon-carat-1-e"></span><span>Gold</span></a><ul class="level0 submenu sectioned   top-moved ui-menu ui-widget ui-widget-content ui-corner-all" style="display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="submenu-child ui-menu-item" role="presentation"><ul class="columns-group starter ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="width: auto; display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level1 nav-2-1 category-item first ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/gold/gold-coin.html" id="ui-id-13" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Gold Coin</span></a></li><li class="megamenu level1 nav-2-2 category-item ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/gold/gold-bar.html" id="ui-id-14" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Gold Bar</span></a></li></ul><ul class="columns-group inner ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="width: auto; display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level1 nav-2-3 category-item ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/gold/gold-jewelry.html" id="ui-id-15" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Gold  Jewelry</span></a></li></ul><ul class="columns-group inner ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="width: auto; display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level1 nav-2-4 category-item ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/gold/gold-dinar.html" id="ui-id-16" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Gold Dinar</span></a></li></ul><ul class="columns-group inner ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="width: auto; display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level1 nav-2-5 category-item last ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/gold/gold-card.html" id="ui-id-17" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Gold Card</span></a></li><span class="close columns-group last ui-widget-content ui-menu-divider"></span></ul></li><!-- end submenu-child --></ul><!-- end submenu --></li><li class="megamenu level-top-sectioned  level0 nav-3 category-item level-top parent ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/all-products.html" class="level-top ui-corner-all" aria-haspopup="true" id="ui-id-5" tabindex="-1" role="menuitem"><span class="ui-menu-icon ui-icon ui-icon-carat-1-e"></span><span>All Products</span></a><ul class="level0 submenu sectioned   top-moved ui-menu ui-widget ui-widget-content ui-corner-all" style="top: 56px; left: 333.5px; display: none;" role="menu" aria-expanded="false" aria-hidden="true"><li class="submenu-child ui-menu-item" role="presentation"><ul class="columns-group starter ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="width: auto; display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level1 nav-3-1 category-item first ui-menu-item" data-has-children="1" style="width: auto" data-test="test" role="presentation"><a href="https://www.nubex.my/all-products/precious-card.html" id="ui-id-18" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Greeting Cards</span></a></li></ul><ul class="columns-group inner ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="width: auto; display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level1 nav-3-2 category-item ui-menu-item" data-has-children="1" style="width: auto" data-test="test" role="presentation"><a href="https://www.nubex.my/all-products/numismatic.html" id="ui-id-19" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Numismatic</span></a></li></ul><ul class="columns-group inner ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="width: auto; display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level1 nav-3-3 category-item parent ui-menu-item" data-has-children="1" style="width: auto" data-test="test" role="presentation"><a href="https://www.nubex.my/all-products/other-metals.html" aria-haspopup="true" id="ui-id-20" class="ui-corner-all" tabindex="-1" role="menuitem"><span class="ui-menu-icon ui-icon ui-icon-carat-1-e"></span><span>Other Metals</span></a><ul class="level1 submenu    ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level2 nav-3-3-1 category-item first ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/all-products/other-metals/bar.html" id="ui-id-21" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Bar</span></a></li><li class="megamenu level2 nav-3-3-2 category-item last ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/all-products/other-metals/coin.html" id="ui-id-22" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Coin</span></a></li></ul><!-- end submenu --></li></ul><ul class="columns-group inner ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="width: auto; display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level1 nav-3-4 category-item last parent ui-menu-item" data-has-children="1" style="width: auto" data-test="test" role="presentation"><a href="https://www.nubex.my/all-products/accessories.html" aria-haspopup="true" id="ui-id-23" class="ui-corner-all" tabindex="-1" role="menuitem"><span class="ui-menu-icon ui-icon ui-icon-carat-1-e"></span><span>Accessories</span></a><ul class="level1 submenu    ui-menu ui-widget ui-widget-content ui-corner-all expanded" style="display: none;" role="menu" aria-hidden="true" aria-expanded="false"><li class="megamenu level2 nav-3-4-1 category-item first ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/all-products/accessories/capsules.html" id="ui-id-24" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Capsules</span></a></li><li class="megamenu level2 nav-3-4-2 category-item ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/all-products/accessories/boxes.html" id="ui-id-25" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Boxes</span></a></li><li class="megamenu level2 nav-3-4-3 category-item ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/all-products/accessories/t-shirt.html" id="ui-id-26" class="ui-corner-all" tabindex="-1" role="menuitem"><span>T-Shirt</span></a></li><li class="megamenu level2 nav-3-4-4 category-item last ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/all-products/accessories/weighing-scale.html" id="ui-id-27" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Weighing Scale</span></a></li></ul><!-- end submenu --></li><span class="close columns-group last ui-widget-content ui-menu-divider"></span></ul></li><!-- end submenu-child --></ul><!-- end submenu --></li><li class="megamenu level-top-sectioned  level0 nav-4 category-item level-top ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/news/category/articles" class="level-top ui-corner-all" id="ui-id-6" tabindex="-1" role="menuitem"><span>News</span></a></li><li class="megamenu level-top-sectioned  level0 nav-5 category-item level-top ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/seller/seller/purchaseorderhistory" class="level-top ui-corner-all" id="ui-id-7" tabindex="-1" role="menuitem"><span>Seller Center</span></a></li><li class="megamenu level-top-sectioned  level0 nav-6 category-item last level-top ui-menu-item" data-test="test" role="presentation"><a href="https://www.nubex.my/auction" class="level-top ui-corner-all" id="ui-id-8" tabindex="-1" role="menuitem"><span>Auction</span></a></li>            </ul>
+</nav>
+</div>
+                                            <div class="section-item-title nav-sections-3 nav-sections-item-title" data-role="collapsible" role="tab" data-collapsible="true" aria-controls="store.links" aria-selected="false" aria-expanded="false" tabindex="0">
+                    <a class="nav-sections-3 nav-sections-item-switch" data-toggle="switch" href="#store.links">Account</a>
+                </div>
+                <div class="section-item-content nav-sections-3 nav-sections-item-content" id="store.links" data-role="content" role="tabpanel" aria-hidden="true" style="display: none;"><!-- Account links --><ul class="header links">        <li class="greet welcome" data-bind="scope: 'customer'">
+            <!-- ko if: customer().fullname  --><!-- /ko -->
+            <!-- ko ifnot: customer().fullname  -->
+            <span data-bind="html:&quot;Connecting Buyer and Seller&quot;">Connecting Buyer and Seller</span>
+                        <!-- /ko -->
+        </li>
+        
+    <li class="authorization-link" data-label="or">
+    <a href="https://www.nubex.my/customer/account/login/referer/aHR0cHM6Ly93d3cubnViZXgubXkvY3VzdG9tZXIvYWNjb3VudC9jcmVhdGUv/">
+        Sign In    </a>
+</li>
+<li><a href="https://www.nubex.my/customer/account/create/">Create an Account</a></li></ul></div>
+                                    </div>
+    </div></div>
+@code {
+
+}

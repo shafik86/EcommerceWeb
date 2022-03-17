@@ -1,3 +1,4 @@
+global using EcommerceWeb.Shared;
 using EcommerceWeb.Server.Data;
 using EcommerceWeb.Server.Models;
 using MudBlazor.Services;

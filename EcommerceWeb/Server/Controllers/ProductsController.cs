@@ -23,19 +23,8 @@ namespace EcommerceWeb.Server.Controllers
         {
             this.productRepository = productRepository;
         }
-
-        //Search Products By Name, Metal
-
-        // GET: api/Products
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
-        {
-            var result = await productRepository.GetProducts();
-            return Ok(result);
-        }
-
         // GET: api/Products/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
             var result = await productRepository.GetProduct(id);
@@ -45,6 +34,39 @@ namespace EcommerceWeb.Server.Controllers
             }
             return Ok(result);
         }
+        //Search Product by Name, Metal
+        [HttpGet("{search}")]
+        public async Task<ActionResult<IEnumerable<Product>>> Search(Metal? metal, Types type)
+        {
+            try
+            {
+                var result = await productRepository.SearchProduct(metal,type);
+                if (result.Any())
+                {
+                    return Ok(result);
+                }
+
+                return NotFound($"tiada Product  {metal} dalam Db");
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                     "Error Searching product record");
+            }
+        }
+
+        // GET: api/Products
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        {
+            var result = await productRepository.GetProducts();
+            return Ok(result);
+        }
+
+        
+
 
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -91,27 +113,7 @@ namespace EcommerceWeb.Server.Controllers
                     "Error creating new employee record");
             }
         }
-        //Search Product by Name, Metal
-        [HttpGet("{search}")]
-        public async Task<ActionResult<IEnumerable<Product>>> Search(string name, Metal? metal)
-        {
-            try
-            {
-                var result = await productRepository.SearchProduct(name, metal);
-                if (result.Any())
-                {
-                    return Ok(result);
-                }
-                return NotFound($"tiada Product nama {name} dalam Db");
-
-            }
-            catch (Exception)
-            {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                     "Error Searching product record");
-            }
-        }
+        
         // DELETE: api/Products/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteProduct(int id)
