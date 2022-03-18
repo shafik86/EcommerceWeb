@@ -52,6 +52,12 @@ namespace EcommerceWeb.Server.Controllers
             catch (Exception)
             {
 
+        //Search Products By Name, Metal
+
+            }
+            catch (Exception)
+            {
+
                 return StatusCode(StatusCodes.Status500InternalServerError,
                      "Error Searching product record");
             }
@@ -65,7 +71,17 @@ namespace EcommerceWeb.Server.Controllers
             return Ok(result);
         }
 
-        
+        // GET: api/Products/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetProduct(int id)
+        {
+            var result = await productRepository.GetProduct(id);
+            if (result == null)
+            {
+                return NotFound($"Product id : {id} is not found");
+            }
+            return Ok(result);
+        }
 
 
         // PUT: api/Products/5
@@ -113,7 +129,27 @@ namespace EcommerceWeb.Server.Controllers
                     "Error creating new employee record");
             }
         }
-        
+        //Search Product by Name, Metal
+        [HttpGet("{search}")]
+        public async Task<ActionResult<IEnumerable<Product>>> Search(string name, Metal? metal)
+        {
+            try
+            {
+                var result = await productRepository.SearchProduct(name, metal);
+                if (result.Any())
+                {
+                    return Ok(result);
+                }
+                return NotFound($"tiada Product nama {name} dalam Db");
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                     "Error Searching product record");
+            }
+        }
         // DELETE: api/Products/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteProduct(int id)

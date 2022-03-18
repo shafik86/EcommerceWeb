@@ -69,7 +69,6 @@ namespace EcommerceWeb.Server.Models.Repository
                 query = query.Where(e => e.Type == type);
             }
 
-
             return await query.ToListAsync();
         }
 
